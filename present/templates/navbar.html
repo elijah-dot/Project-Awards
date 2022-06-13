@@ -1,0 +1,58 @@
+
+
+<!--header-->
+<header class="main-header clearfix" role="header">
+  <div class="logo">
+    <a href="#"><em>COSMIC</em>PROJECTS</a>
+  </div>
+  <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+  <nav id="menu" class="main-nav" role="navigation">
+    <ul class="main-menu">
+      <li><a href="/">Home</a></li>
+      <li class="has-submenu">
+        <a href="#section2">About Us</a>
+        <ul class="sub-menu">
+          <li><a href="#section2">Who we are?</a></li>
+          <li><a href="#section3">What we do?</a></li>
+          <li><a href="#section3">How it works?</a></li>
+          <li>
+            <a
+              href="https://templatemo.com/about"
+              rel="sponsored"
+              class="external"
+              >External URL</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li><a href="/profile">Profile</a></li>
+      <!-- <li><a href="#section5">Video</a></li> -->
+      <li><a href="#section6">Contact</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="/logout" class="external">Logout</a></li>
+      {% else %}
+      <li><a href="/accounts/login" class="external">Login</a></li>
+      {% endif %}
+      <form
+      class="form-inline my-2 my-lg-0"
+      role="search"
+      action="{% url 'search_results' %}"
+    >
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search projects by Title"
+          name="search"
+        />
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="fa fa-search" aria-hidden="true" style="color: white"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    </ul>
+    
+  </nav>
+</header>
