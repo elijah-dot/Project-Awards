@@ -1,0 +1,48 @@
+{% load bootstrap4 %}
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  {% if title %}
+  <title>Awards</title>
+  {% else %}
+    <title>Awards</title>
+  {% endif %}
+  {% block styles %}
+    {% bootstrap_css %}
+    <!-- <link rel="stylesheet" href="{% static'css/fontawesome.css'}">
+    <link rel="stylesheet" href="{% static  'css/templatemo-grad-school.css'}">
+    <link rel="stylesheet" href="{% static'css/owl.css'}">
+    <link rel="stylesheet" href="{% static'css/lightbox.css'}"> -->
+
+    <link rel="stylesheet" href="../static/css/lightbox.css">
+    <link rel="stylesheet" href="../static/css/flex-slider.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/css/owl.css">
+    <link rel="stylesheet" href="../static/css/templatemo-grad-school.css">
+
+
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico'%}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  {% endblock %}
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="section courses" data-section="section4">
+    {% block content %}
+
+    {%endblock%}
+    </div>
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     {% bootstrap_javascript %}
+    {% endblock %}
+</body>
+</html>
