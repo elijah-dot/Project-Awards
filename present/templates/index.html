@@ -1,0 +1,76 @@
+{%extends 'base.html'%} {% block content %} {{block.super}}
+<!-- <link rel="stylesheet" href="../static/css/lightbox.css">
+<link rel="stylesheet" href="../static/css/flex-slider.css">
+<link rel="stylesheet" href="../static/css/fontawesome.css">
+<link rel="stylesheet" href="../static/css/owl.css">
+<link rel="stylesheet" href="../static/css/templatemo-grad-school.css"> -->
+
+<!-- ***** Main Banner Area Start ***** -->
+<section class="section main-banner" id="top" data-section="section1">
+  <video autoplay muted loop id="bg-video">
+    <source src="../static/images/course-video.mp4" type="video/mp4" />
+  </video>
+
+  <div class="video-overlay header-text">
+    <div class="caption">
+      <h6>take your imagination to another level</h6>
+      <h2><em>Cosmic</em>Projects</h2>
+      <div class="main-button">
+        <div class="scroll-to-section">
+          <a href="#section2">Discover more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div
+class="container-fluid"
+  
+  style="
+    background-image: url(../static/images/choosing-bg.jpg);
+    background-size: cover;
+    
+    
+  "
+>
+<h3 id="section2" style="font-size:50px; font-weight:bold;color:aliceblue;text-align:center">posted projects</h3>
+  <div class="row">
+    {% for proj in project %}
+    <div class="col-md-4">
+      <div class="card-group">
+        <div class="card">
+          <a href="{%url 'project' proj.id%}"
+            ><img
+              class="card-img-top"
+              src="{{proj.image.url}}"
+              alt="Card image cap"
+            />
+          </a>
+          <div class="card__share">
+            <a id="share" class="share-icon" href="{{proj.url}}" target="_blank"
+              ><i class="fa fa-share"></i
+            ></a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{proj.project_name}}</h5>
+            <p class="card-text">{{proj.description}}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted"
+              >Posted {{proj.pub_date |timesince }} ago!</small
+            ><br />
+            <button class="btn btn-primary btn-sm">
+              <a style="color: black" href="{%url 'project' proj.id%}"
+                >Rate Project</a
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
