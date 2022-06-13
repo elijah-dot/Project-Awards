@@ -1,0 +1,24 @@
+
+
+
+{%extends 'base.html'%} 
+{% block content %}
+<br><br><br><br>
+<div class="container">
+
+  <div class="row">
+      <div class="col-md-4">
+        <h2>{{ warning }}</h2>
+        <h2>Found "{{success}}"</h2>
+      </div>
+
+      <div class="col-md-8">
+        {% for projs in projects %}
+          <img height="300" width="400" src = '{{projs.image.url}}'>
+          <h2>{{projs.project_name}}</h2>
+          <p>{{projs.description}}</p>
+      {% endfor %}
+      </div>
+  </div>
+</div>
+{% endblock %}
