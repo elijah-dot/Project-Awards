@@ -1,0 +1,97 @@
+{%extends 'base.html'%} {% block content %} <br /><br /><br /><br />
+<div class="container-fluid" style="background-image: url(../static/images/choosing-bg.jpg);background-size: cover;color: aliceblue;
+
+
+">
+  <div class="row">
+    <div class="col-md-3">
+      <br />
+      <h2 align="center"><u>Project Details</u></h2>
+      <div class="card-body text-center">
+        <h5 class="card-title">Project Name: {{project.project_name}}</h5>
+        <p>About: {{ project.description }}</p>
+        <p>Category: {{project.category}}</p>
+        <p>Location: {{project.location}}</p>
+      </div>
+      <div class="card-footer" align="center">
+        <small class="text-muted">By: {{project.user.username}}</small>
+      </div>
+    </div>
+    <div class="col-md-5">
+      {% if project.image %}
+      <img src="{{project.image.url}}" alt="" class="card-img-top projimg" />
+      {% endif %}
+      <div class="card__share">
+        <a id="share" class="share-icon" href="{{project.url}}" target="_blank"
+          ><i class="fa fa-share"></i
+        ></a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h2 align="center"><u>Rate This Project</u></h2>
+      <form action="{%url 'rate' project.id %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="Design">Design</label>
+          <input
+            type="number"
+            class="form-control"
+            name="design"
+            min="0"
+            max="10"
+            value="0"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="Content">Content</label>
+          <input
+            type="number"
+            class="form-control"
+            name="content"
+            min="0"
+            max="10"
+            value="0"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="Usability">Usability</label>
+          <input
+            type="number"
+            class="form-control"
+            name="usability"
+            min="0"
+            max="10"
+            value="0"
+          />
+        </div>
+        <button class="btn btn-warning btn-sm" type="submit">Rate</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br /><br />
+<div class="container-fluid ">
+  <!-- <h2 align="center"><u>This Project's Ratings</u></h2> -->
+  <table id="rates">
+    {% if rating %}
+    <tr class="titles">
+      <th class="name"></th>
+      <th class="title" >Content</th>
+      <th class="title">Design</th>
+      <th class="title">Usability</th>
+      <th class="title">Average</th>
+	</tr>
+    {% for rate in rating%}
+    <tr class="details">
+      <td class="name">{{rate.user.username}}</td>
+      <td class="content">{{rate.content_rate}}</td>
+      <td class="design">{{rate.design_rate}}</td>
+      <td class="usability">{{rate.usability_rate}}</td>
+      <td class="usability">{{rate.average}}</td>
+    </tr>
+    {% endfor %} {% else %}
+    <div class="alert alert-secondary">No votes yet</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

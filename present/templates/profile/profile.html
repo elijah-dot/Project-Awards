@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<br><br><br><br>
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    {% if profile.prof_photo %}
+                    <img src="{{profile.prof_photo.url}}" alt="" class="card-img-top">
+                    {%else%}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3aV6aq2LNho3SY8cDICGVEdRweW5u9IaZ_w&usqp=CAU"
+                        class="card-img-top" alt="My profile picture">
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <p>{{profile.user.username }}</p>
+                        <p>
+                            {% if profile.bio %}
+                            <small>{{ profile.bio }}</small>
+                            {% else %}
+                            <span class="text-danger">No about me</span>
+                            {% endif %}
+                        </p>
+                        <h6>Joined on: <span class="badge bg-secondary text-white">
+                                {{ user.date_joined }} </span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <form action="/upload/project/">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Post a Project" />
+                </form><br>
+                  {% if request.user is user %}  
+                    <a href="{%url 'update_profile' user.id %}" class="btn btn-primary btn-sm">
+                      Edit Profile
+                    </a>
+                  {% endif %}
+            </div><hr>
+        </div>
+        <div class="col-md-6">
+            <h3 align="center">My Projects</h3>
+            {% for work in project %}
+                <img src="{{ work.image.url }}" class="img-responsive" alt="Image">
+                <p>{{work.description}}</p>
+            {% empty %}
+            <p class="alert alert-danger" role="alert">No projects !</p>
+            </div>
+            {% endfor %}
+</div>
+
+
+{% endblock %}

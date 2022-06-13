@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+    <link rel="stylesheet" href="../../static/css/lightbox.css">
+    <link rel="stylesheet" href="../../static/css/flex-slider.css">
+    <link rel="stylesheet" href="../../static/css/fontawesome.css">
+    <link rel="stylesheet" href="../../static/css/owl.css">
+    <link rel="stylesheet" href="../../static/css/templatemo-grad-school.css">
+<div class= "container-fluid" style="background-image: url(../../static/images/choosing-bg.jpg);background-size: cover;color: aliceblue;height: 100vh;">
+    <div class="col-md-6"style="margin-left:35%;margin-top: 60px;" >
+        <div class="form-data" >
+            <form action="{%url 'upload'%}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2><u>Post Project</u></h2>
+                {% bootstrap_form form%}
+                <button class="btn btn-warning btn-sm" type="submit">Upload</button>
+            </form>
+        </div>
+</div>
+</div>
+{% endblock %}
