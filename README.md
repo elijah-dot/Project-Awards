@@ -19,7 +19,7 @@
 
 ## Home Page
 
-![project101!](./static/screenshots/2022-06-06_11-50.png)
+![project101!](./static/images/awward.png)
 
 
 
